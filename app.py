@@ -100,7 +100,7 @@ with tab1:
 
     with col_info:
         st.markdown("**CSV Requirements:**")
-        st.markdown("* Must have a review text column (e.g., `review_text`, `tweet_text`, `full_text`).")
+        st.markdown("* Must have a review text column (e.g., `review_text`, `tweet_text`, `full_text`, `comment`, `feedback`).")
         st.markdown("* Optional: A rating column (e.g., `rating`, `stars`).")
 
     if uploaded_file is not None and analyzer is not None:
