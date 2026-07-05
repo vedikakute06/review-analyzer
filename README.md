@@ -90,7 +90,7 @@ review-analyzer/
 ## Input Data Format
 
 Your CSV file should contain review text in one of these column names:
-- `review_text`, `text`, `review`, `content`, `reviewText`, `Text`, `Review`, `reviews`, or `customer_review`
+- `review_text`, `text`, `review`, `content`, `reviewText`, `Text`, `Review`, `reviews`, `customer_review`, `tweet_text`, `full_text`, `comment`, `comments`, `message`, or `feedback`
 
 Optional rating column (automatically detected):
 - `rating`, `star_rating`, `stars`, `score`, `Rating`, or `Star`

@@ -38,6 +38,10 @@ LABEL_MAPPING = {
     'NEUTRAL': 'NEUTRAL',
 }
 # ---------------------------------------------------
+TEXT_COLUMN_ALIASES = [
+    'review_text', 'text', 'review', 'content', 'reviewText', 'Text', 'Review', 'reviews',
+    'customer_review', 'tweet_text', 'full_text', 'comment', 'comments', 'message', 'feedback'
+]
 
 
 class ReviewAnalyzer:
@@ -209,8 +213,7 @@ class ReviewAnalyzer:
         df = pd.read_csv(file)
 
         # Common names for review text and rating columns
-        text_cols = ['review_text', 'text', 'review', 'content', 'reviewText', 'Text', 'Review', 'reviews',
-                     'customer_review']
+        text_cols = TEXT_COLUMN_ALIASES
         rating_cols = ['rating', 'star_rating', 'stars', 'score', 'Rating', 'Star']
 
         # Find and rename columns (case-insensitive search for flexibility)
@@ -230,6 +233,8 @@ class ReviewAnalyzer:
 
         # Filter out very short reviews (e.g., just punctuation or a single word)
         df = df[df['review_text'].str.len() > 10]
+        if df.empty:
+            raise ValueError("No review rows remain after removing blank or very short text.")
 
         # Apply sampling
         if sample_size and len(df) > sample_size:
